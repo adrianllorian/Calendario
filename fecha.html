@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="CSS.css">
+    <style type="text/css"></style>
+    <title>Tabla</title>
+</head>
+
+<body>
+    <script>
+
+        var fecha = new Date(prompt("Introduce una fecha (YYYY-MM-DD)."));
+        fecha.setDate(1);
+        var diaNumero = fecha.getDate();
+        var dia = fecha.getDay() - 1;
+        console.log(dia);
+        var mes = fecha.getMonth() + 1;
+
+        var tabla = "<table border=1>";
+        tabla += "<tr>";
+        tabla += "<th>" + "Lunes" + "</th>";
+        tabla += "<th>" + "Martes" + "</th>";
+        tabla += "<th>" + "Miercoles" + "</th>";
+        tabla += "<th>" + "Jueves" + "</th>";
+        tabla += "<th>" + "Viernes" + "</th>";
+        tabla += "<th>" + "Sabado" + "</th>";
+        tabla += "<th>" + "Domingo" + "</th>";
+        tabla += "</tr>";
+
+        var contador = 0;
+        for (var j = 0; j < 6; j++) {
+            tabla += "<tr>";
+            for (var i = 0; i < 7; i++) {
+                if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+                    if ((i != dia) && (contador == 0)) {
+                        tabla += "<td>" + "</td>";
+                    }
+                    else if ((i == dia) && (contador == 0)) {
+                        tabla += "<td>" + diaNumero + "</td>";
+                        contador++;
+                        diaNumero++;
+                    }
+                    else if (diaNumero < 32) {
+                        tabla += "<td>" + diaNumero + "</td>";
+                        diaNumero++;
+                    }
+                }
+                else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+                    if ((i != dia) && (contador == 0)) {
+                        tabla += "<td>" + "</td>";
+                    }
+                    else if ((i == dia) && (contador == 0)) {
+                        tabla += "<td>" + diaNumero + "</td>";
+                        contador++;
+                        diaNumero++;
+                    }
+                    else if (diaNumero < 31) {
+                        tabla += "<td>" + diaNumero + "</td>";
+                        diaNumero++;
+                    }
+                }
+                else if (mes == 2){
+                    if ((i != dia) && (contador == 0)) {
+                        tabla += "<td>" + "</td>";
+                    }
+                    else if ((i == dia) && (contador == 0)) {
+                        tabla += "<td>" + diaNumero + "</td>";
+                        contador++;
+                        diaNumero++;
+                    }
+                    else if (diaNumero < 29) {
+                        tabla += "<td>" + diaNumero + "</td>";
+                        diaNumero++;
+                    }
+                }
+            }
+            tabla += "</tr>";
+        }
+        tabla += "</table>";
+        document.write(tabla);
+    </script>
+</body>
+
+</html>
